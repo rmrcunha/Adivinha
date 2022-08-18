@@ -10,13 +10,16 @@ int main() {
 
     int chute;
     int tentativa = 1;
+
+    int pontos = 1000;
+
     while (1){
 
         printf("Tentativa %d\n", tentativa);
-        printf("Qual é o seu chute?");
+        printf("Qual é o seu chute?\n");
 
         scanf("%d", &chute);
-        printf("Seu chute foi %d", chute);
+        printf("Seu chute foi %d\n", chute);
 
         if(chute < 0){
             printf("Você não pode chutar números negativos");
@@ -29,7 +32,6 @@ int main() {
 
         if(acertou){
             printf("Parabéns! Você acertou!\n");
-            printf("Jogue novamente!");
 
             break;
         }
@@ -41,8 +43,14 @@ int main() {
             printf("Seu chute foi menor que o número secreto.\n");
         }
         tentativa++;
+
+        int pontosperdidos = (chute - numerosecreto) / 2;
+
+
+        pontos = pontos - pontosperdidos;
     }
 
     printf("Fim de jogo!\n");
-    printf("Você terminou o jogo em %d tentativas", tentativa-1);
+    printf("Você terminou o jogo em %d tentativas\n", tentativa-1);
+    printf("Total de pontos: %d", pontos);
 }
