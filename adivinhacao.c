@@ -1,17 +1,21 @@
 #include <stdio.h>
-#define NUMERO_DE_TENTATIVAS 3
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
     printf("****************************************\n");
     printf ("*Bem vindo ao nosso jogo de adivinhação*\n");
     printf("****************************************\n");
 
-    int numerosecreto = 42;
+    int segundos = time(0);
+    srand(segundos);
 
+    int numerogrande = rand();
+    int numerosecreto = numerogrande % 100;
     int chute;
     int tentativa = 1;
 
-    int pontos = 1000;
+    double pontos = 1000;
 
     while (1){
 
@@ -44,7 +48,7 @@ int main() {
         }
         tentativa++;
 
-        int pontosperdidos = (chute - numerosecreto) / 2;
+        double pontosperdidos = abs(chute - numerosecreto) / (double)2;
 
 
         pontos = pontos - pontosperdidos;
@@ -52,5 +56,5 @@ int main() {
 
     printf("Fim de jogo!\n");
     printf("Você terminou o jogo em %d tentativas\n", tentativa-1);
-    printf("Total de pontos: %d", pontos);
+    printf("Total de pontos: %.1f", pontos);
 }
